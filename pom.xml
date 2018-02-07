@@ -10,7 +10,7 @@
 
     <groupId>com.softos.net</groupId>
     <artifactId>snmp4j-wrapper</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>SNMP4J Wrapper</name>
     <description>A small and convenient wrapper around SNMP4J.</description>
@@ -146,6 +146,6 @@
         <url>https://github.com/bnese/snmp4j-wrapper</url>
         <connection>scm:git:git://github.com/bnese/snmp4j-wrapper</connection>
         <developerConnection>scm:git:git@github.com:bnese/snmp4j-wrapper.git</developerConnection>
-      <tag>v1.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
