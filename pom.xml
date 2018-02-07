@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.softos.maven</groupId>
+        <artifactId>maven-softos-super-pom</artifactId>
+        <version>0.1.13</version>
+    </parent>
+
+    <groupId>com.softos.net</groupId>
+    <artifactId>snmp4j-wrapper</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>SNMP4J Wrapper</name>
+    <description>A small and convenient wrapper around SNMP4J.</description>
+    <url>https://github.com/bnese/snmp4j-wrapper</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <inceptionYear>2017</inceptionYear>
+
+    <organization>
+        <name>Børge Nese</name>
+        <url>https://softos.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>bnese</id>
+            <name>Børge Nese</name>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <url>https://github.com/bnese/snmp4j-wrapper/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <properties>
+        <snmp4j.version>2.5.11</snmp4j.version>
+        <snmp4j-agent.version>2.6.2</snmp4j-agent.version>
+        <junit.version>4.12</junit.version>
+
+        <license.outputDirectory>${project.build.directory}/generated-sources/license</license.outputDirectory>
+        <license.thirdPartyFilename>THIRD-PARTY-LICENSE.txt</license.thirdPartyFilename>
+        <license.licenseName>apache_v2</license.licenseName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.snmp4j</groupId>
+            <artifactId>snmp4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.snmp4j</groupId>
+            <artifactId>snmp4j-agent</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-third-party-license</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${license.outputDirectory}</directory>
+                                    <includes>
+                                        <include>${license.thirdPartyFilename}</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                    <licenseMerges>
+                        <licenseMerge>The Apache Software License, Version 2.0|Apache 2</licenseMerge>
+                    </licenseMerges>
+                    <sectionDelimiter>~</sectionDelimiter>
+                    <processStartTag>~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~</processStartTag>
+                    <processEndTag>-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</processEndTag>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>update-file-header</goal>
+                            <goal>add-third-party</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.snmp4j</groupId>
+                <artifactId>snmp4j</artifactId>
+                <version>${snmp4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.snmp4j</groupId>
+                <artifactId>snmp4j-agent</artifactId>
+                <version>${snmp4j-agent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <scm>
+        <url>https://github.com/bnese/snmp4j-wrapper</url>
+        <connection>scm:git:git://github.com/bnese/snmp4j-wrapper</connection>
+        <developerConnection>scm:git:git@github.com:bnese/snmp4j-wrapper.git</developerConnection>
+    </scm>
+</project>
