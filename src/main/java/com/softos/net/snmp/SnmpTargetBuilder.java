@@ -27,7 +27,7 @@ import org.snmp4j.smi.GenericAddress;
 import org.snmp4j.smi.OctetString;
 
 public class SnmpTargetBuilder {
-    enum Version {
+    public enum Version {
         V1(SnmpConstants.version1),
         V2c(SnmpConstants.version2c);
         public final int value;
