@@ -10,7 +10,7 @@ A small and convenient wrapper around SNMP4J. Require Java 8 or higher.
 <dependency>
         <groupId>com.softos.net</groupId>
         <artifactId>snmp4j-wrapper</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
 </dependency>
 ```
 
